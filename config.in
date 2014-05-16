@@ -32,9 +32,9 @@ config  RT2860V2_AP_WDS
 	bool "WDS"
 	depends on RT2860V2_AP
 
-#config  RT2860V2_AP_WMM_ACM
-#	bool "WMM ACM"
-#	depends on RT2860V2_AP
+config  RT2860V2_AP_WMM_ACM
+	bool "WMM ACM"
+	depends on RT2860V2_AP
 
 config  RT2860V2_AP_MBSS
 	bool "MBSSID"
@@ -44,7 +44,7 @@ config	NEW_MBSSID_MODE
 	bool "New MBSSID MODE"
 	depends on RT2860V2_AP
 	depends on RT2860V2_AP_MBSS
-	depends on RALINK_RT3883 || RALINK_RT3352 || RALINK_RT5350 || RALINK_RT6352 || RALINK_MT7620
+	depends on RALINK_RT3883 || RALINK_RT3352 || RALINK_RT5350 || RALINK_RT6352 || TARGET_ramips
 	default n
 
 config  RT2860V2_AP_APCLI
@@ -55,7 +55,7 @@ config  RT2860V2_AP_MAC_REPEATER
 	bool "MAC Repeater Support"
 	depends on RT2860V2_AP
 	depends on RT2860V2_AP_APCLI
-	depends on RALINK_RT6352 || RALINK_MT7620
+	depends on RALINK_RT6352 || TARGET_ramips
 	default n
 
 config  RT2860V2_AP_IGMP_SNOOP
@@ -123,13 +123,13 @@ config  RT2860V2_AP_TXBF
 	depends on RALINK_RT2883 || RALINK_RT3883
 	default y
 
-#config  RT2860V2_EXT_CHANNEL_LIST
-#	bool "Extension Channel List"
-#	depends on RT2860V2_AP
+config  RT2860V2_EXT_CHANNEL_LIST
+	bool "Extension Channel List"
+	depends on RT2860V2_AP
 
-#config  RT2860V2_KTHREAD
-#	bool "Kernel Thread"
-#	depends on RT2860V2_AP
+config  RT2860V2_KTHREAD
+	bool "Kernel Thread"
+	depends on RT2860V2_AP
 
 config  RT2860V2_AUTO_CH_SELECT_ENHANCE
 	bool "Auto Channel Selection Enhancement"
@@ -139,16 +139,16 @@ config  RT2860V2_AP_80211N_DRAFT3
 	bool "802.11n Draft3"
 	depends on RT2860V2_AP
 
-#config  RT2860V2_AP_RTMP_INTERNAL_TX_ALC
-#        bool "TSSI Compensation"
-#        depends on RT2860V2_AP
-#        depends on RALINK_RT3350 || RALINK_RT3352 || RALINK_RT5350 || RALINK_MT7620 || RALINK_RT6352
-#	default n
+config  RT2860V2_AP_RTMP_INTERNAL_TX_ALC
+        bool "TSSI Compensation"
+        depends on RT2860V2_AP
+        depends on RALINK_RT3350 || RALINK_RT3352 || RALINK_RT5350 || TARGET_ramips || RALINK_RT6352
+	default n
 
 config  RT2860V2_ADJ_PWR_CONSUMPTION_SUPPORT
         bool "Adjust Power Consumption Support"
         depends on RT2860V2_AP
-        depends on RALINK_MT7620 || RALINK_RT6352
+        depends on TARGET_ramips || RALINK_RT6352
 	default n
 
 config  RT2860V2_SINGLE_SKU
@@ -158,7 +158,7 @@ config  RT2860V2_SINGLE_SKU
 
 choice
 	prompt "Choose Power Design"
-        depends on RALINK_MT7620 || RALINK_RT6352
+        depends on TARGET_ramips || RALINK_RT6352
 	default INTERNAL_PA_INTERNAL_LNA
 	config  INTERNAL_PA_INTERNAL_LNA
 	bool "Internal PA and Internal LNA"
@@ -171,28 +171,29 @@ endchoice
 config  RT2860V2_AP_RTMP_INTERNAL_TX_ALC
         bool "TSSI Compensation"
         depends on RT2860V2_AP
-        depends on RALINK_RT3350 || RALINK_RT3352 || RALINK_RT5350 || RALINK_MT7620 || RALINK_RT6352
+        depends on RALINK_RT3350 || RALINK_RT3352 || RALINK_RT5350 || TARGET_ramips || RALINK_RT6352
         depends on INTERNAL_PA_INTERNAL_LNA || INTERNAL_PA_EXTERNAL_LNA
 	default n
 
 config  RT2860V2_AP_RTMP_TEMPERATURE_COMPENSATION
         bool "Temperature Compensation"
         depends on RT2860V2_AP
-        depends on RALINK_MT7620 || RALINK_RT6352
+        depends on TARGET_ramips || RALINK_RT6352
 	default n
 
-#config  RT2860V2_80211R_FT
-#	bool "802.11r Fast BSS Transition"
-#	depends on RT2860V2_AP
+config  RT2860V2_80211R_FT
+	bool "802.11r Fast BSS Transition"
+	depends on RT2860V2_AP
 
-#config  RT2860V2_80211R_RR
-#	bool "802.11k Radio Resource Management"
-#	depends on RT2860V2_AP
+config  RT2860V2_80211R_RR
+	bool "802.11k Radio Resource Management"
+	depends on RT2860V2_AP
 
-#config  RT2860V2_MCAST_RATE_SPECIFIC
-#	bool "User specific tx rate of mcast pkt"
-#	depends on RT2860V2_AP
+config  RT2860V2_MCAST_RATE_SPECIFIC
+	bool "User specific tx rate of mcast pkt"
+	depends on RT2860V2_AP
 
-#config  RT2860V2_SNMP
-#	bool "Net-SNMP Support"
-#	depends on RT2860V2_AP
+config  RT2860V2_SNMP
+	bool "Net-SNMP Support"
+	depends on RT2860V2_AP
+endif
