@@ -23,6 +23,7 @@
 #include <asm/addrspace.h>
 #include "ralink-flash.h"
 #include "rt_mmap.h"
+
 //fix
 #include <linux/delay.h>
 #include <linux/sched.h>
@@ -31,6 +32,8 @@
 #include <linux/mount.h>
 #include <asm/io.h>
 //fix
+struct proc_dir_entry *procRegDir;
+
 /*
  * Flash API: ra_mtd_read, ra_mtd_write
  * Arguments:
@@ -140,6 +143,7 @@ int ra_mtd_read_nm(char *name, loff_t from, size_t len, u_char *buf)
 	return ret;
 }
 //fix
+EXPORT_SYMBOL(procRegDir);
 EXPORT_SYMBOL(ra_mtd_write_nm);
 EXPORT_SYMBOL(ra_mtd_read_nm);
 //fix
