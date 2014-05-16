@@ -22,7 +22,7 @@
 #include <linux/mtd/partitions.h>
 #include <asm/addrspace.h>
 #include "ralink-flash.h"
-#include "../ralink/rt_mmap.h"
+#include "rt_mmap.h"
 //fix
 #include <linux/delay.h>
 #include <linux/sched.h>
