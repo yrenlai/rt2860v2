@@ -75,7 +75,7 @@ rt2860v2_ap-objs += ../rt2860v2/os/linux/rt_pci_rbus.o
 rt2860v2_ap-objs += ../rt2860v2/os/linux/rt_rbus_pci_drv.o
 rt2860v2_ap-objs += ../rt2860v2/os/linux/rt_rbus_pci_util.o
 rt2860v2_ap-objs += ../rt2860v2/os/linux/rbus_main_dev.o
-rt2860v2_ap-objs += ../rt2860v2/os/linux/ralink_flash.o
+rt2860v2_ap-objs += ../rt2860v2/os/linux/ralink-flash.o
 
 rt2860v2_ap-objs += ../rt2860v2/ate/common/rt_ate.o
 rt2860v2_ap-objs += ../rt2860v2/ate/common/rt_qa.o
