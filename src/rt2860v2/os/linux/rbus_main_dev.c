@@ -120,7 +120,7 @@ int rt2880_module_init(VOID)
 		Or you will suffer NULL pointer in list_add of
 		cfg80211_netdev_notifier_call().
 	*/
-	CFG80211_Register(pAd, pAd->pCfgDev, pNetDev);
+	CFG80211_Register(pAd, pAd->pCfgDev, net_dev);
 #endif /* RT_CFG80211_SUPPORT */
 
 /*All done, it's time to register the net device to kernel. */

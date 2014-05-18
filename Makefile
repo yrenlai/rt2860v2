@@ -23,7 +23,7 @@ PKG_KCONFIG:=RT2860V2_AP_V24_DATA_STRUCTURE RT2860V2_AP_LED RT2860V2_AP_WSC RT28
 define KernelPackage/rt2860v2
   CATEGORY:=MT7620
   TITLE:=Driver for MT7620
-  DEPENDS:=@TARGET_ramips +wireless-tools +maccalc
+  DEPENDS:=@TARGET_ramips +wireless-tools +maccalc +kmod-mac80211
   DEFAULT:=y if (CONFIG_TARGET_ramips_mt7620n || CONFIG_TARGET_ramips_mt7620a)
   FILES:=$(PKG_BUILD_DIR)/rt2860v2_ap/rt2860v2_ap.ko
   AUTOLOAD:=$(call AutoLoad,50,rt2860v2_ap)

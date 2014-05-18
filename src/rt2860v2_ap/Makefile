@@ -2,7 +2,7 @@
 EXTRA_CFLAGS = -I$(SOURCE_DIR)/rt2860v2/include -I$(SOURCE_DIR)/rt2860v2/ate/include
 
 ifeq ($(CONFIG_SOC_MT7620),y)
-EXTRA_CFLAGS += -DCONFIG_RALINK_MT7620
+EXTRA_CFLAGS += -DCONFIG_RALINK_MT7620 -DRT_CFG80211_SUPPORT
 endif
 
 
@@ -77,6 +77,9 @@ rt2860v2_ap-objs += ../rt2860v2/os/linux/rt_rbus_pci_util.o
 rt2860v2_ap-objs += ../rt2860v2/os/linux/rbus_main_dev.o
 rt2860v2_ap-objs += ../rt2860v2/os/linux/ralink-flash.o
 
+rt2860v2_ap-objs += ../rt2860v2/os/linux/cfg80211.o
+rt2860v2_ap-objs += ../rt2860v2/os/linux/cfg80211drv.o
+
 rt2860v2_ap-objs += ../rt2860v2/ate/common/rt_ate.o
 rt2860v2_ap-objs += ../rt2860v2/ate/common/rt_qa.o
 rt2860v2_ap-objs += ../rt2860v2/ate/common/ate_pci.o
@@ -135,11 +138,11 @@ ifeq ($(CONFIG_RT2860V2_AP_MAC_REPEATER),y)
 rt2860v2_ap-objs += ../rt2860v2/ap/ap_repeater.o
 endif
 
-#ifeq ($(CONFIG_RT2860V2_AP_WAPI),y)
-#rt2860v2_ap-objs += ../rt2860v2/common/wapi.o
-#rt2860v2_ap-objs += wapi_crypt.obj
-#rt2860v2_ap-objs += wapi_sms4.obj
-#endif
+ifeq ($(CONFIG_RT2860V2_AP_WAPI),y)
+rt2860v2_ap-objs += ../rt2860v2/common/wapi.o
+rt2860v2_ap-objs += wapi_crypt.obj
+rt2860v2_ap-objs += wapi_sms4.obj
+endif
 
 ifeq ($(CONFIG_RT2860V2_AP_IGMP_SNOOP),y)
 rt2860v2_ap-objs += ../rt2860v2/common/igmp_snoop.o
@@ -371,9 +374,9 @@ ifeq ($(CONFIG_RT2860V2_MCAST_RATE_SPECIFIC),y)
 EXTRA_CFLAGS += -DMCAST_RATE_SPECIFIC
 endif
 
-#ifeq ($(CONFIG_RT2860V2_AP_WMM_ACM),y)
-#EXTRA_CFLAGS += -DWMM_ACM_SUPPORT
-#endif
+ifeq ($(CONFIG_RT2860V2_AP_WMM_ACM),y)
+EXTRA_CFLAGS += -DWMM_ACM_SUPPORT
+endif
 
 ifeq ($(CONFIG_RT2860V2_AP_LED),y)
 EXTRA_CFLAGS += -DLED_CONTROL_SUPPORT -DCONFIG_SWMCU_SUPPORT
